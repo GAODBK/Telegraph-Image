@@ -15,6 +15,18 @@
 
 简单 3 步，即可部署本项目，拥有自己的图床
 
+如果需要在自己的服务器上部署可以考虑下面的方式：
+
+首先需要在服务器上安装node.js和npm，具体步骤可参考node.js官网https://nodejs.org/
+
+    git clone https://github.com/cf-pages/Telegraph-Image 将代码克隆到服务器上
+    cd Telegraph-Image
+    npm install wrangler 安装Cloudflare Worker CLI
+    运行wrangler pages dev ./ --kv "img_url" --port 8080 --binding BASIC_USER=admin --binding BASIC_PASS=123 --persist-to ./data --log-level none
+    可以根据自身需要使用nginx或类似程序配置反向代理和https
+
+
+
 1.Fork 本仓库 (注意：必须使用 Git 或者 Wrangler 命令行工具部署后才能正常使用，[文档](https://developers.cloudflare.com/pages/functions/get-started/#deploy-your-function))
 
 2.打开 Cloudflare Dashboard，进入 Pages 管理页面，选择创建项目，选择`连接到 Git 提供程序`
